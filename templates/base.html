@@ -4,26 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Система управління рестораном</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        header { background: #2d6a4f; color: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-        nav a { color: white; text-decoration: none; margin-right: 20px; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
-        .card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background: #2d6a4f; color: white; }
-        .btn { display: inline-block; background: #52b788; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; border: none; cursor: pointer; }
-        .btn-danger { background: #e63946; }
-        .btn-small { font-size: 0.8rem; padding: 3px 8px; }
-        .flash { background: #ffb703; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
-        form { margin: 10px 0; }
-        input, select { padding: 5px; margin: 5px; }
-        .stats { display: flex; gap: 20px; }
-        .stat-card { background: #e9ecef; padding: 15px; border-radius: 10px; flex: 1; text-align: center; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
