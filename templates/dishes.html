@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Страви</h2>
+    <form method="post" action="{{ url_for('add_dish') }}">
+        <input type="text" name="name" placeholder="Назва страви" required>
+        <input type="number" step="0.1" name="markup" placeholder="Коеф. націнки (напр. 2.5)" value="2.5" required>
+        <button type="submit" class="btn">Додати страву</button>
+    </form>
+    <table>
+        <tr><th>Назва</th><th>Собівартість</th><th>Ціна продажу</th><th>Дії</th></tr>
+        {% for dish in dishes %}
+        <tr>
+            <td>{{ dish.name }}</td>
+            <td>{{ dish.cost_price }}</td>
+            <td>{{ dish.selling_price }}</td>
+            <td>
+                <a href="{{ url_for('dish_detail', id=dish.id) }}" class="btn btn-small">Склад</a>
+                <a href="{{ url_for('calculation', dish_id=dish.id) }}" class="btn btn-small">Калькуляція</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="stats">
+    <div class="stat-card">
+        <h3>📦 Інгредієнти</h3>
+        <p style="font-size: 2rem;">{{ ingredients_count }}</p>
+    </div>
+    <div class="stat-card">
+        <h3>🍲 Страви</h3>
+        <p style="font-size: 2rem;">{{ dishes_count }}</p>
+    </div>
+</div>
+<div class="card">
+    <h2>Ласкаво просимо!</h2>
+    <p>Ця система допомагає керувати інгредієнтами, стравами та автоматично розраховувати собівартість.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Історія змін цін інгредієнтів</h2>
+    <table>
+        <tr><th>Інгредієнт</th><th>Стара ціна</th><th>Нова ціна</th><th>Дата зміни</th></tr>
+        {% for record in history %}
+        <tr>
+            <td>{{ record.ingredient.name }}</td>
+            <td>{{ record.old_price }}</td>
+            <td>{{ record.new_price }}</td>
+            <td>{{ record.change_date.strftime('%Y-%m-%d %H:%M') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

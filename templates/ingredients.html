@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Інгредієнти</h2>
+    <form method="post" action="{{ url_for('add_ingredient') }}">
+        <input type="text" name="name" placeholder="Назва" required>
+        <input type="text" name="unit" placeholder="Од. виміру (кг, л, шт)" required>
+        <input type="number" step="0.01" name="price" placeholder="Ціна" required>
+        <button type="submit" class="btn">Додати</button>
+    </form>
+    <table>
+        <tr><th>Назва</th><th>Од.</th><th>Ціна (грн)</th><th>Дії</th></tr>
+        {% for ing in ingredients %}
+        <tr>
+            <td>{{ ing.name }}</td>
+            <td>{{ ing.unit }}</td>
+            <td>{{ ing.current_price }}</td>
+            <td>
+                <form method="post" action="{{ url_for('edit_ingredient', id=ing.id) }}" style="display:inline;">
+                    <input type="number" step="0.01" name="price" placeholder="Нова ціна" required>
+                    <button type="submit" class="btn btn-small">Оновити ціну</button>
+                </form>
+                <a href="{{ url_for('delete_ingredient', id=ing.id) }}" class="btn btn-small btn-danger">Видалити</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

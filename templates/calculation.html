@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Калькуляційна картка страви</h2>
+    <h3>{{ dish.name }}</h3>
+    <table>
+        <tr><th>Інгредієнт</th><th>Норма закладання</th><th>Ціна за од.</th><th>Вартість</th></tr>
+        {% for di in dish.ingredients %}
+        <tr>
+            <td>{{ di.ingredient.name }}</td>
+            <td>{{ di.quantity }} {{ di.ingredient.unit }}</td>
+            <td>{{ di.ingredient.current_price }} грн</td>
+            <td>{{ di.quantity * di.ingredient.current_price }} грн</td>
+        </tr>
+        {% endfor %}
+        <tr style="font-weight:bold;"><td colspan="3">Разом собівартість:</td><td>{{ dish.cost_price }} грн</td></tr>
+        <tr><td colspan="3">Націнка (коеф. {{ dish.markup }}):</td><td>{{ dish.selling_price }} грн</td></tr>
+    </table>
+    <button onclick="window.print();" class="btn">Роздрукувати</button>
+    <a href="{{ url_for('dishes') }}" class="btn">Назад</a>
+</div>
+{% endblock %}

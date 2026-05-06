@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Технологічна карта: {{ dish.name }}</h2>
+    <p>Собівартість: {{ dish.cost_price }} грн | Націнка: {{ dish.markup }} | Продажна ціна: {{ dish.selling_price }} грн</p>
+    <h3>Склад страви:</h3>
+    <table>
+        <tr><th>Інгредієнт</th><th>Кількість</th><th>Вартість</th><th>Дія</th></tr>
+        {% for di in dish.ingredients %}
+        <tr>
+            <td>{{ di.ingredient.name }}</td>
+            <td>{{ di.quantity }} {{ di.ingredient.unit }}</td>
+            <td>{{ di.quantity * di.ingredient.current_price }}</td>
+            <td><a href="{{ url_for('remove_dish_ingredient', dish_id=dish.id, ingredient_id=di.ingredient.id) }}" class="btn-small btn-danger">Видалити</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h3>Додати інгредієнт до страви</h3>
+    <form method="post" action="{{ url_for('add_dish_ingredient', dish_id=dish.id) }}">
+        <select name="ingredient_id" required>
+            <option value="">--Виберіть інгредієнт--</option>
+            {% for ing in ingredients %}
+            <option value="{{ ing.id }}">{{ ing.name }} ({{ ing.unit }}) - {{ ing.current_price }} грн</option>
+            {% endfor %}
+        </select>
+        <input type="number" step="0.01" name="quantity" placeholder="Кількість" required>
+        <button type="submit" class="btn">Додати</button>
+    </form>
+    <a href="{{ url_for('dishes') }}" class="btn">Назад до страв</a>
+</div>
+{% endblock %}
